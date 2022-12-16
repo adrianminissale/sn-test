@@ -1,0 +1,12 @@
+{
+  "name": "suprnation",
+  "version": "1.0.0",
+  "description": "sn-test",
+  "author": "adrian minissale",
+  "scripts": {
+    "start": "ws --directory src"
+  },
+  "dependencies": {
+    "local-web-server": "^5.2.1"
+  }
+}
