@@ -1,16 +1,6 @@
-const input = []
+import { calculate } from "./common.js";
 
-const resolve = ex => {
-  if (ex.includes('+') && ex.split('').pop() !== '+') {
-    return ex.split('+').reduce((res, val) => parseFloat(res) + parseFloat(val))
-  } else if (ex.includes('-') && ex.split('').pop() !== '-') {
-    return ex.split('-').reduce((res, val) => parseFloat(res) - parseFloat(val))
-  } else if (ex.includes('*') && ex.split('').pop() !== '*') {
-    return ex.split('*').reduce((res, val) => parseFloat(res) * parseFloat(val))
-  } else if (ex.includes('/') && ex.split('').pop() !== '/') {
-    return ex.split('/').reduce((res, val) => parseFloat(res) / parseFloat(val))
-  }
-}
+const input = []
 
 const getRand = () => {
   return fetch('https://www.random.org/integers/?num=1&min=1&max=100&col=1&base=10&format=plain&rnd=new')
@@ -20,10 +10,11 @@ const getRand = () => {
 
 const evaluate = async (event) => {
   const btn = event.target.innerHTML
+  let num
 
   switch (btn) {
     case '=':
-      const result = resolve( input.join().replaceAll(',', '') )
+      const result = calculate( input.join().replaceAll(',', '') )
       input.length = 0
       display.innerHTML = result
       input.push( result )

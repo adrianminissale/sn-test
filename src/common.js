@@ -24,20 +24,20 @@ export const calculate = expression => {
     math = null
   }
 
-  if (currentExp.includes(' + ')) {
-    currentExp = currentExp.split(' + ').reduce((res, val) => {
+  if (currentExp.includes('+') && currentExp.split('').pop() !== '+') {
+    currentExp = currentExp.split('+').reduce((res, val) => {
       return parseFloat(res) + parseFloat(val)
     })
-  } else if (currentExp.includes(' - ')) {
-    currentExp = currentExp.split(' - ').reduce((res, val) => {
+  } else if (currentExp.includes('-') && currentExp.split('').pop() !== '-') {
+    currentExp = currentExp.split('-').reduce((res, val) => {
       return parseFloat(res) - parseFloat(val)
     })
-  } else if (currentExp.includes(' * ')) {
-    currentExp = currentExp.split(' * ').reduce((res, val) => {
+  } else if (currentExp.includes('*') && currentExp.split('').pop() !== '*') {
+    currentExp = currentExp.split('*').reduce((res, val) => {
       return parseFloat(res) * parseFloat(val)
     })
-  } else if (currentExp.includes(' / ')) {
-    currentExp = currentExp.split(' / ').reduce((res, val) => {
+  } else if (currentExp.includes('/') && currentExp.split('').pop() !== '/') {
+    currentExp = currentExp.split('/').reduce((res, val) => {
       return parseFloat(res) / parseFloat(val)
     })
   }
@@ -63,7 +63,7 @@ export const calculate = expression => {
     return expression = result.toString()
   }
 
-  if (expression.includes('(') || expression.includes(' + ') || expression.includes(' - ') || expression.includes(' * ') || expression.includes(' / ')) {
+  if (expression.includes('(') || expression.includes('+') || expression.includes('-') || expression.includes('*') || expression.includes('/')) {
     return calculate( expression )
   }
 
